@@ -68,6 +68,27 @@ class CreateSubscriptionRequest extends AbstractRequest
     }
 
     /**
+     * Get the the description
+     *
+     * @return int
+     */
+    public function getDescription()
+    {
+        return $this->getParameter('description');
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param int $value
+     * @return \Omnipay\Common\Message\AbstractRequest|CreateSubscriptionRequest
+     */
+    public function setDescription($value)
+    {
+        return $this->setParameter('description', $value);
+    }
+
+    /**
      * Set the tax percentage
      *
      * @param $value
@@ -96,6 +117,10 @@ class CreateSubscriptionRequest extends AbstractRequest
 
         if ($this->getTrialEnd()) {
             $data['trial_end'] = $this->getTrialEnd();
+        }
+
+        if ($this->getDescription()) {
+            $data['description'] = $this->getDescription();
         }
         return $data;
     }
